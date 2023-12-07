@@ -3,7 +3,7 @@ module daddaTree_tb;
 
    // Declare the `ops` and `result` signals
    logic [5:0][12:0] ops;
-   logic [18:0] result;
+   logic [0:19] result;
 
    // Instantiate a clock and reset signal
    logic clk;
@@ -23,8 +23,9 @@ module daddaTree_tb;
 
    // Define test vectors for random cases
 
-   for (int i = 0; i < 10; i++) begin
-      random_vectors[i] = $random;
+   genvar i;
+   for ( i = 0; i < 10; i++) begin
+      assign random_vectors[i] = $random;
    end
 
    // Initialize the test vectors

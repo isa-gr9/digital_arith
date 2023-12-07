@@ -1,0 +1,5 @@
+#!/bin/bash 
+echo "Starting Modelsim..."    
+export LM_LICENSE_FILE=/mentor/license.dat
+/mentor/modeltech/linux/vsim 
+

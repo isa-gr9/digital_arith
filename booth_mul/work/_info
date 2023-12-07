@@ -1,0 +1,97 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/manu/Documents/ISA/isa_lab2/booth_mul
+T_opt
+V`cEL<`OTT8:`LC=0f2:AF2
+Z1 04 12 4 work daddaTree_tb fast 0
+Z2 =1-000c29b0c988-6571b791-6258b-1808
+Z3 o-quiet -auto_acc_if_foreign -work work
+Z4 n@_opt
+Z5 OE;O;6.5f;42
+vCSA
+Z6 Mx1 6 sv_std 3 std
+Z7 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
+Z8 IWkVnM=E<D>bVOTFz?G]ZJ2
+Z9 V4X9gnC>`VmPC3PTLY?S3;2
+S1
+Z10 w1701776681
+Z11 8/home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv
+Z12 F/home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv
+L0 3
+Z13 OE;L;6.5f;42
+r1
+31
+Z14 o-work work -L mtiAvm -L mtiOvm -L mtiUPF
+Z15 n@c@s@a
+Z16 !s100 mOR1fG]kzCAJ_nIb]Q]2L0
+!s85 0
+vdaddaTree
+R6
+R7
+Z17 IXU`Q>MiDYDJe:2i884AJA2
+Z18 V7[3mZ3_e<?5Gje^=95Pfz0
+S1
+Z19 w1701951361
+Z20 8/home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv
+Z21 F/home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv
+L0 3
+R13
+r1
+31
+R14
+Z22 ndadda@tree
+Z23 !s100 Hi3;iD6`[HiXDd7KHn]EZ2
+!s85 0
+vdaddaTree_tb
+R6
+R7
+Z24 Ik=oM`K<eI6an:<I:DH>?o3
+Z25 VbA<LI;@00MOjOR5Pjzm@]0
+S1
+Z26 w1701950400
+Z27 8/home/manu/Documents/ISA/isa_lab2/booth_mul/tb_daddatree.sv
+Z28 F/home/manu/Documents/ISA/isa_lab2/booth_mul/tb_daddatree.sv
+L0 1
+R13
+r1
+31
+R14
+Z29 ndadda@tree_tb
+Z30 !s100 lIi8_2ZBNR[9ZF7EGRfm73
+!s85 0
+vfullAdder
+R6
+R7
+Z31 IooT2?]QhTg<if3NcdaRB?2
+Z32 VgP>QREVJjhZ?I9S@5>nhJ3
+S1
+Z33 w1701776682
+Z34 8/home/manu/Documents/ISA/isa_lab2/booth_mul/fullAdder.sv
+Z35 F/home/manu/Documents/ISA/isa_lab2/booth_mul/fullAdder.sv
+L0 3
+R13
+r1
+31
+R14
+Z36 nfull@adder
+Z37 !s100 0[Aln26HCZPBYm^_=Wn572
+!s85 0
+vhalfAdder
+R6
+R7
+Z38 IdW=VXZ1NXgnP9kS>2W0ad2
+Z39 VU^gjdOHzYS42mI=<6gLN82
+S1
+R33
+Z40 8/home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv
+Z41 F/home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv
+L0 3
+R13
+r1
+31
+R14
+Z42 nhalf@adder
+Z43 !s100 J_9:kbcCIinH4VakhZ`WR3
+!s85 0

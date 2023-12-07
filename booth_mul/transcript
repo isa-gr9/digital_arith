@@ -1,0 +1,134 @@
+# //  ModelSim SE 6.5f Jun 16 2010 Linux 5.15.0-71-generic
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module halfAdder
+# 
+# Top level modules:
+# 	halfAdder
+
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/fullAdder.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module fullAdder
+# 
+# Top level modules:
+# 	fullAdder
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module CSA
+# -- Compiling module CS_block
+# 
+# Top level modules:
+# 	CSA
+
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree
+# -- Compiling module CSA
+# -- Compiling module fullAdder
+# -- Compiling module halfAdder
+# 
+# Top level modules:
+# 	daddaTree
+
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/tb_daddatree.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree_tb
+# 
+# Top level modules:
+# 	daddaTree_tb
+
+vsim work.daddaTree_tb
+# vsim work.daddaTree_tb 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): (vopt-2241) Connection width does not match width of port 'S'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(12).
+# Loading sv_std.std
+# Loading work.daddaTree_tb(fast)
+# Loading work.daddaTree(fast)
+# ** Warning: (vsim-3010) [TSCALE] - Module 'daddaTree' has a `timescale directive in effect, but previous modules do not.
+#         Region: /daddaTree_tb/dadda_tree
+# ** Warning: (vsim-3017) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(91): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /daddaTree_tb/dadda_tree/FA0
+# ** Warning: (vsim-3722) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(91): [TFMPC] - Missing connection for port 'Co'.
+# ** Fatal: (vsim-3839) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(120): Variable '/daddaTree_tb/dadda_tree/M3[1][5]', driven via a port connection, is multiply driven. See /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(99).
+#         Region: /daddaTree_tb/dadda_tree/HA3
+# ** Fatal: (vsim-3839) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(122): Variable '/daddaTree_tb/dadda_tree/M3[1][16]', driven via a port connection, is multiply driven. See /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(102).
+#         Region: /daddaTree_tb/dadda_tree/HA5
+# ** Fatal: (vsim-3839) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(138): Variable '/daddaTree_tb/dadda_tree/fastAdd[1][3]', driven via a port connection, is multiply driven. See /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(137).
+#         Region: /daddaTree_tb/dadda_tree/HA7
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (18 or 18) does not match connection size (19) for port 'A'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(9).
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (18 or 18) does not match connection size (19) for port 'B'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(10).
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (1 or 1) does not match connection size (32) for port 'Carry_i'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(11).
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (18 or 18) does not match connection size (19) for port 'S'.
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# Error loading design
+
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module halfAdder
+# 
+# Top level modules:
+# 	halfAdder
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/fullAdder.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module fullAdder
+# 
+# Top level modules:
+# 	fullAdder
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module CSA
+# -- Compiling module CS_block
+# 
+# Top level modules:
+# 	CSA
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree
+# -- Compiling module CSA
+# -- Compiling module fullAdder
+# -- Compiling module halfAdder
+# 
+# Top level modules:
+# 	daddaTree
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/tb_daddatree.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree_tb
+# 
+# Top level modules:
+# 	daddaTree_tb
+vsim work.daddaTree_tb
+# vsim work.daddaTree_tb 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): (vopt-2241) Connection width does not match width of port 'S'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(12).
+# Loading sv_std.std
+# Loading work.daddaTree_tb(fast)
+# Loading work.daddaTree(fast)
+# ** Warning: (vsim-3010) [TSCALE] - Module 'daddaTree' has a `timescale directive in effect, but previous modules do not.
+#         Region: /daddaTree_tb/dadda_tree
+# ** Fatal: (vsim-3839) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(120): Variable '/daddaTree_tb/dadda_tree/M3[1][5]', driven via a port connection, is multiply driven. See /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(99).
+#         Region: /daddaTree_tb/dadda_tree/HA3
+# ** Fatal: (vsim-3839) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(122): Variable '/daddaTree_tb/dadda_tree/M3[1][16]', driven via a port connection, is multiply driven. See /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(102).
+#         Region: /daddaTree_tb/dadda_tree/HA5
+# ** Fatal: (vsim-3839) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(138): Variable '/daddaTree_tb/dadda_tree/fastAdd[1][3]', driven via a port connection, is multiply driven. See /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(137).
+#         Region: /daddaTree_tb/dadda_tree/HA7
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (18 or 18) does not match connection size (19) for port 'A'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(9).
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (18 or 18) does not match connection size (19) for port 'B'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(10).
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (1 or 1) does not match connection size (32) for port 'Carry_i'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(11).
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# ** Warning: (vsim-3015) /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(144): [PCDPC] - Port size (18 or 18) does not match connection size (19) for port 'S'.
+#         Region: /daddaTree_tb/dadda_tree/CSA0
+# Error loading design

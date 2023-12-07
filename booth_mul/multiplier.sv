@@ -21,9 +21,20 @@ module multiplier #(parameter N = 10)(
     input logic Carry_i,
     output logic [sizeCSA-1:0] S,
     output logic Carry_o
-    );
+  );
   endmodule
-  
+
+  module fullAdder (
+  input logic a, b, Cin,
+  output logic s, Co
+	);
+
+  module halfAdder (
+  input logic A, B,
+  output logic Sum, Cout
+	);
+
+
   // type definition
   typedef logic [N-1:0] A_array [(N-2)/2:0];
   //typedef logic [N-1:0] partialProd_array [(((N-2)/2)+1):0]; 
@@ -32,7 +43,10 @@ module multiplier #(parameter N = 10)(
   A_array A_temp;
   A_array partialProd;
   logic [2:0] sel_temp;
-  logic [][] M1
+  logic [5:0][17:0] M1;
+  logic [4:0][17:0] M1;
+  logic [3:0][17:0] M1;
+
 
   // stage 0
   //assign A_temp[0] = A;
@@ -46,7 +60,7 @@ module multiplier #(parameter N = 10)(
     .out(M1[0][Nbit : 0])
   );
   
-  assign M1[1][0] = B[1];
+  M1[1][0] = B[1];
   
   // matrix1 creation -> partial product placement (with the proper left shift)
   genvar i;
@@ -59,17 +73,17 @@ module multiplier #(parameter N = 10)(
         .out(M1[i][Nbit + 2*i : 2*i])
       );
       
-      assign M1[i+1][2*i] = B[((2*i)+1)];
-      assign M1[i][Nbit + 2*i +1] = ~B[((2*i)+1)];
-      assign M1[i][Nbit + 2*i +2] = 1'b1;
+      M1[i+1][2*i] = B[((2*i)+1)];
+      M1[i][Nbit + 2*i +1] = ~B[((2*i)+1)];
+      M1[i][Nbit + 2*i +2] = 1'b1;
     end
   endgenerate
 
   // adjust the elements positions (form a V-shape)
   
   
-  assign M1[0][13:17] = M1[4][14:17];
-  assign M1[1][15:17] = M1[3][14:17];
+  M1[0][13:17] = M1[4][14:17];
+  M1[1][15:17] = M1[3][14:17];
 
 
 // START COMPRESSING THE MATRIX 
@@ -95,12 +109,12 @@ module multiplier #(parameter N = 10)(
 //l = 6 -> forming the next level matrix
 
 
-	assign M2[0:3][0:5] = M1[0:3][0:5]; //RIGHT
-	assign M2[0:2][14:17] = M1[0:2][14:17] //LEFT
+	M2[0:3][0:5] = M1[0:3][0:5]; //RIGHT
+	M2[0:2][14:17] = M1[0:2][14:17] //LEFT
 	
-	assign M2[1:3][6] = M1[2:4][6];
-	assign M2[3][8] = M1[6][8];
-	assign M2[2][13] = M1[3][13];
+	M2[1:3][6] = M1[2:4][6];
+	M2[3][8] = M1[6][8];
+	M2[2][13] = M1[3][13];
 
 // l = 4 -> set of central adders
 
@@ -122,10 +136,10 @@ HA5:	halfAdder(M2[0][15], M2[1][15], M3[0][15], M3[1,16]);
 
 // l = 4 -> forming the next level matrix
 
-	assign M3[0:2][0:3] = M2[0:2][0:3];
-	assign M3[1:2][4:5] = M2[2:3][4:5];
-	assign M3[0:2][16:17] = M2[0:2][16:17];
-	assign M3[2][6:14] = M2[3][6:14];
+	M3[0:2][0:3] = M2[0:2][0:3];
+	M3[1:2][4:5] = M2[2:3][4:5];
+	M3[0:2][16:17] = M2[0:2][16:17];
+	M3[2][6:14] = M2[3][6:14];
 	
 // l = 3 -> set of central adders
 	
