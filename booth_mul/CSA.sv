@@ -20,7 +20,7 @@ module CSA #(parameter int sizeCSA = 20, int sizeRCA = 4) (
     
     logic carrySel[(sizeCSA/sizeRCA)-1 : 0];
     
-    CS_block #(.N(sizeRCA)) firstBlock  (
+    CS_block #(.sizeRCA(sizeRCA)) firstBlock  (
                 .A(A[sizeRCA - 1 : 0]),
                 .B(B[sizeRCA - 1 : 0]),
                 .sel(Carry_i),

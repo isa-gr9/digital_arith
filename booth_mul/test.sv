@@ -23,7 +23,7 @@ endgenerate
 // adjust the elements positions (form a V-shape)
 
 assign M1[0][12:0] = M0[0][12:0];
-assign M1[1][14:0] = M0[1][14:0];
+assign M1[1][13:0] = M0[1][13:0];
 assign M1[2][16:0] = M0[2][16:0];
 assign M1[3][13:0] = M0[3][12:0];
 assign M1[0][17:13] = M0[4][17:13];
@@ -115,6 +115,6 @@ assign fastAdd[1][1]   = 0;
 assign fastAdd[0][18]  = 0;
 
 // final sum (2 operands) adder instantiation
-CSA CSA0 (fastAdd[0][18:0], fastAdd[1][18:0], 0, result[18:0], result[19]);
+CSA #(.sizeCSA(20), .sizeRCA(4)) CSA0(fastAdd[0][18:0], fastAdd[1][18:0], 0, result[18:0], result[19]);
 
 endmodule

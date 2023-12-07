@@ -33,7 +33,7 @@ module CS_block#(parameter int sizeRCA = 4) (
         .Carry_o(carry1)
     );
     
-    always @ (carry1. carry0, Sum1, Sum0, sel) begin
+    always @ (carry1, carry0, Sum1, Sum0, sel) begin
         case (sel)
             1'b0: begin
                     assign S = Sum0;
