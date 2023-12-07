@@ -33,7 +33,7 @@ module CSA #(parameter int sizeCSA = 20, int sizeRCA = 4) (
         for (i = 1; i <= (sizeCSA/sizeRCA)-1; i=i+1) begin : STAGE_1toN
            
       
-            CS_block #(.N(sizeRCA)) RCA0  (
+            CS_block #(.sizeRCA(sizeRCA)) RCA0  (
                 .A(A[((i * sizeRCA)+(sizeRCA - 1)) : i * sizeRCA]),
                 .B(B[((i * sizeRCA)+(sizeRCA - 1)) : i * sizeRCA]),
                 .sel(carrySel[i-1]),

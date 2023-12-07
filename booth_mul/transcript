@@ -1,0 +1,94 @@
+# //  ModelSim SE 6.5f Jun 16 2010 Linux 5.15.0-71-generic
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+vlib work
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/CS_block.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module CS_block
+# -- Compiling module RCA
+# 
+# Top level modules:
+# 	CS_block
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module CSA
+# -- Compiling module CS_block
+# 
+# Top level modules:
+# 	CSA
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/fullAdder.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module fullAdder
+# 
+# Top level modules:
+# 	fullAdder
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module halfAdder
+# 
+# Top level modules:
+# 	halfAdder
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/RCA.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module RCA
+# -- Compiling module fullAdder
+# 
+# Top level modules:
+# 	RCA
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree
+# 
+# Top level modules:
+# 	daddaTree
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/tb_daddatree.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree_tb
+# 
+# Top level modules:
+# 	daddaTree_tb
+vsim work.daddaTree_tb
+# vsim work.daddaTree_tb 
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(42): Module parameter 'N' not found for override.
+# ** Error: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(42): Module parameter 'N' not found for override.
+# ** Error: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(42): Module parameter 'N' not found for override.
+# ** Error: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(42): Module parameter 'N' not found for override.
+# Optimization failed
+# Error loading design
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module CSA
+# -- Compiling module CS_block
+# 
+# Top level modules:
+# 	CSA
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree
+# 
+# Top level modules:
+# 	daddaTree
+vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/tb_daddatree.sv
+# Model Technology ModelSim SE vlog 6.5f Compiler 2010.06 Jun 16 2010
+# -- Compiling module daddaTree_tb
+# 
+# Top level modules:
+# 	daddaTree_tb
+vsim work.daddaTree_tb
+# vsim work.daddaTree_tb 
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(118): (vopt-2241) Connection width does not match width of port 'A'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(4).
+# ** Warning: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(118): (vopt-2241) Connection width does not match width of port 'B'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(5).
+# ** Warning: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(118): (vopt-2241) Connection width does not match width of port 'Carry_i'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(6).
+# ** Warning: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(118): (vopt-2241) Connection width does not match width of port 'S'. The port definition is at: /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv(7).
+# ** Error: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(85): 'M3[1][5:4]' is driven by more than one continuous assignment. See /home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv(6).
+# ** Error: /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv(88): 'M3[1][17:16]' is driven by more than one continuous assignment. See /home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv(6).
+# Error loading design

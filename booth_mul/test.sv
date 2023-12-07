@@ -7,7 +7,7 @@ logic [5:0][17:0] M0;
 logic [5:0][17:0] M1;
 logic [4:0][17:0] M2;
 logic [3:0][17:0] M3;
-logic [1:0][18:0] fastAdd;
+logic [1:0][19:0] fastAdd;
 
 genvar i;
 
@@ -112,7 +112,8 @@ assign fastAdd[0][1:0] = M3[0][1:0];
 assign fastAdd[1][0]   = M3[1][0];
 assign fastAdd[1][2]   = M3[2][2];
 assign fastAdd[1][1]   = 0;
-assign fastAdd[0][18]  = 0;
+assign fastAdd[1][19]   = 0;
+assign fastAdd[0][19:18]  = 0;
 
 // final sum (2 operands) adder instantiation
 CSA #(.sizeCSA(20), .sizeRCA(4)) CSA0(fastAdd[0][18:0], fastAdd[1][18:0], 0, result[18:0], result[19]);
