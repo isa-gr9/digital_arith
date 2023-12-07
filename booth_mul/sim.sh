@@ -6,16 +6,16 @@ set -e
 
 #COMPILE
 
-vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/halfAdder.sv
-vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/fullAdder.sv
-vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/CSA.sv
-vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/test.sv
+vlog -reportprogress 300 -work work ./halfAdder.sv
+vlog -reportprogress 300 -work work ./fullAdder.sv
+vlog -reportprogress 300 -work work ./CSA.sv
+vlog -reportprogress 300 -work work ./test.sv
 
 
 #Testbench
-vlog -reportprogress 300 -work work /home/manu/Documents/ISA/isa_lab2/booth_mul/tb_daddatree.sv
+vlog -reportprogress 300 -work work ./tb_daddatree.sv
 
-vsim work.daddaTree_tb
+vsim -do ./run.do
 
 # Remove work directory
 rm -rf work
