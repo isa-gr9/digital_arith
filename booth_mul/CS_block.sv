@@ -6,7 +6,7 @@ module CS_block#(parameter int sizeRCA = 4) (
     input logic sel,
     output logic [sizeRCA-1:0] S,
     output logic Carry_o
-    );
+);
 
 logic [sizeRCA-1:0] Sum0, Sum1;
 logic carry0, carry1;
@@ -29,7 +29,7 @@ RCA #(.N(sizeRCA)) RCA1  (
 );
 
 
-always @ (*) begin
+always_comb begin
     case (sel)
         1'b0: begin
                 S       = Sum0;

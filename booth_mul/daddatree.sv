@@ -1,5 +1,5 @@
 module daddaTree (
-  input logic [5:0][12:0] ops,
+  input logic [4:0][12:0] ops,
   output logic [20:0] result
 );
 
@@ -16,7 +16,7 @@ genvar i;
 generate 
   for (i = 0; i<5; i= i+1) begin 
     assign M0[i][12 + 2*i : 0 + 2*i]  = ops[i];
-    assign M0[i+1][2*i] = 1;
+    assign M0[i+1][2*i] = ops[i][10];
     assign M0[i+1][2*i +1] = 0;
   end
 endgenerate
@@ -41,10 +41,9 @@ assign M1[2][16:0]  = M0[2][16:0];
 assign M1[2][18:17] = '0;
 assign M1[3][14:0]  = M0[3][14:0];
 assign M1[3][18:15] = '0;
-assign M1[4][13:0] = M0[4][13:0];
+assign M1[4][13:0]  = M0[4][13:0];
 assign M1[4][18:14] = '0;
-
-assign M1[5][18:0] = M0[5][18:0];
+assign M1[5][18:0]  = M0[5][18:0];
 
  
 // START COMPRESSING THE MATRIX 

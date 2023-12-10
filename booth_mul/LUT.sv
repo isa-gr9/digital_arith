@@ -10,12 +10,12 @@ module LUT #(parameter N = 10)
   always_comb begin
     case (sel)
       3'b000: out = '0;
-      3'b001: out = A_in;
-      3'b010: out = A_in;
+      3'b001: out = {A_in[N-1],A_in[(N-1):0]};
+      3'b010: out = {A_in[N-1],A_in[(N-1):0]};
       3'b011: out = {A_in[(N-1):0], 1'b0};
       3'b100: out = ~{A_in[(N-1):0], 1'b0};
-      3'b101: out = ~A_in; 
-      3'b110: out = ~A_in;
+      3'b101: out = {1'b1,(~A_in)};
+      3'b110: out = {1'b1,(~A_in)};
       3'b111: out = '0;
       default: out = '0;
     endcase
