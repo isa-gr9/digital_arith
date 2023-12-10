@@ -1,24 +1,27 @@
-module daddaTree_tb;
+// Modelsim-ASE requires a timescale directive
+`timescale 1 ns / 1 ns
 
+module daddaTree_tb;
 
    // Declare the `ops` and `result` signals
    logic [5:0][12:0] ops;
-   logic [0:19] result;
+   logic [0:20] result = 21'b0;
 
    // Instantiate a clock and reset signal
-   logic clk;
-   logic rst;
+   logic clk = 1'b0;
+
 
    // Declare the `daddaTree` module instantiation
    daddaTree dadda_tree(.ops(ops), .result(result));
+
 
    // Create a clock generator
    always #5 clk = ~clk;
 
    // Define test vectors for edge cases
-   logic [5:0][12:0] zero_vector = '0;
-   logic [5:0][12:0] one_vector = 4'b0001;
-   logic [5:0][12:0] f_vector = 4'b1111;
+   logic [5:0][12:0] zero_vector = 6'b0;
+   logic [5:0][12:0] one_vector = 6'b000001;
+   logic [5:0][12:0] f_vector = 6'b111111;
    logic [5:0][12:0] random_vectors[10];
 
    // Define test vectors for random cases
@@ -45,10 +48,5 @@ module daddaTree_tb;
             repeat(3) @(posedge clk);
         end
     end
-
-   // Monitor the `result` signal
-   always @(dadda_tree.result) begin
-      $display("Result: %h", result);
-   end
 
 endmodule

@@ -6,35 +6,6 @@ module multiplier #(parameter N = 10)(
   output logic [N-1:0] result
 );
 
-  // LUT component declaration
-  module LUT #(parameter N = 10)
-  (
-    input logic [2:0] sel,
-    input logic [N-1:0] A_in,
-    output logic [N:0] out
-  );
-  endmodule
-  
-  module CSA #(parameter int sizeCSA = 20, int sizeRCA = 4) (
-    input logic [sizeCSA-1:0] A,
-    input logic [sizeCSA-1:0] B,
-    input logic Carry_i,
-    output logic [sizeCSA-1:0] S,
-    output logic Carry_o
-  );
-  endmodule
-
-  module fullAdder (
-  input logic a, b, Cin,
-  output logic s, Co
-	);
-
-  module halfAdder (
-  input logic A, B,
-  output logic Sum, Cout
-	);
-
-
   // type definition
   typedef logic [N-1:0] A_array [(N-2)/2:0];
   //typedef logic [N-1:0] partialProd_array [(((N-2)/2)+1):0]; 
