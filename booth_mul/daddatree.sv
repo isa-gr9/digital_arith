@@ -1,3 +1,5 @@
+`timescale 1 ns / 1 ns
+
 module daddaTree (
   input logic [4:0][12:0] ops,
   output logic [20:0] result
@@ -8,16 +10,22 @@ logic [5:0][18:0] M1;
 logic [3:0][18:0] M2;
 logic [2:0][18:0] M3;
 logic [1:0][19:0] fastAdd;
+logic [19:0]result0;
 
 genvar i;
 
 
 //MO generation
 generate 
-  for (i = 0; i<5; i= i+1) begin 
-    assign M0[i][12 + 2*i : 0 + 2*i]  = ops[i];
-    assign M0[i+1][2*i] = ops[i][10];
+  for (i = 0; i<=4; i= i+1) begin 
     assign M0[i+1][2*i +1] = 0;
+    assign M0[i][12 + 2*i : 0 + 2*i]  = ops[i];
+
+    if (i == 0) 
+      assign M0[i+1][2*i] = ops[i][11];
+    else
+    assign M0[i+1][2*i] = ~ops[i][11];
+
   end
 endgenerate
 
@@ -25,14 +33,14 @@ assign M0[0][18:13] = '0;
 assign M0[1][18:15] = '0;
 assign M0[2][1:0] = '0;
 assign M0[2][18:17] = '0;
-assign M0[3][4:0] = '0;
+assign M0[3][3:0] = '0;
 assign M0[4][5:0] = '0;
 assign M0[5][7:0] = '0;
 assign M0[5][18:10] = '0;
 
 
 // adjust the elements positions (form a V-shape)
-assign M1[0][13]    = ~(M0[0][12]);  //TBD: just for test
+assign M1[0][13]    = ~ops[0][12]; 
 assign M1[0][12:0]  = M0[0][12:0];
 assign M1[0][18:14] = M0[4][18:14];
 assign M1[1][14:0]  = M0[1][14:0];
@@ -123,7 +131,10 @@ assign fastAdd[0][1:0] = M3[0][1:0];
 assign fastAdd[1][0]   = M3[1][0];
 assign fastAdd[1][2]   = M3[2][2];
 assign fastAdd[1][1]   = 0;
-assign fastAdd[0][19]  = 0;
+assign fastAdd[0][19]  = ops[3][11];
+
+
+assign result0 = fastAdd[0] + fastAdd[1];
 
 // final sum (2 operands) adder instantiation
 CSA #(.sizeCSA(20), .sizeRCA(4)) CSA0 (.A(fastAdd[0][19:0]), .B(fastAdd[1][19:0]), .Carry_i(1'b0), .S(result[19:0]), .Carry_o(result[20]));

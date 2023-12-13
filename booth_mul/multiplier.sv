@@ -32,9 +32,6 @@ generate
       .A_in(A),
       .out(partProducts[i][N:0])
     );
-
-//    if (i < 4) assign partProducts[i][N+2:N+1] = {1'b1, ~partProducts[0][N]};
-//    else assign partProducts[i][N+2:N+1] = {1'b0, ~partProducts[0][N]};
   end
 endgenerate
 
@@ -46,15 +43,15 @@ generate
 
     assign ops[i][N:0] = partProducts[i][N:0];
     
-    if (i == 0) assign ops[i][N+2:N+1] = {partProducts[i][N],partProducts[i][N]}; 
-    else if (i < 4) assign ops[i][N+2:N+1] = {1'b1, ~partProducts[0][N]};
-    else assign ops[i][N+2:N+1] = {1'b1, ~partProducts[0][N]};
+    if (i == 0) assign ops[i][N+2:N+1] = {B[(2*i+1)],B[(2*i+1)]}; 
+    else if (i <= 4) assign ops[i][N+2:N+1] = {1'b1, ~B[(2*i+1)]};
    
   end
 endgenerate
 
 
 daddaTree dadda (.ops(ops), .result(result));
+
 
 
 endmodule
