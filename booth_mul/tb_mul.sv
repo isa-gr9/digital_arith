@@ -35,10 +35,35 @@ end
 // Initialize the test vectors
 initial begin
 
-  //  A = 10'b0011001100;
-  //  B = 10'b1111110001;
+    A = 10'b0000110110;
+    B = 10'b0011111000;
+    repeat(3) @(posedge clk);
+
+    A = 10'b0110010011;
+    B = 10'b0111100101;
 
     repeat(3) @(posedge clk);
+
+    A = 10'b0111001111;
+    B = 10'b0111100101;
+
+    repeat(3) @(posedge clk);
+
+    A = 10'b0010001010;
+    B = 10'b0011010100;
+
+    repeat(3) @(posedge clk);
+
+    A = 10'b0110000000;
+    B = 10'b0010001010;
+
+    repeat(3) @(posedge clk);
+    
+    A = 10'b0111010011;
+    B = 10'b0110010000;
+
+    repeat(3) @(posedge clk);
+    
 
 
     A = zero_vector; // Set the first operand to zero

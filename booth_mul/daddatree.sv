@@ -134,7 +134,7 @@ assign op1[1:0] = M3[0][1:0];
 assign op2[0]   = M3[1][0];
 assign op2[2]   = M3[2][2];
 assign op2[1]   = 0;
-assign op1[19]  = ops[3][11];
+assign op1[19]  = ops[4][11];
 
 
 // final sum (2 operands) adder instantiation
