@@ -42,7 +42,7 @@ initial begin
     repeat(3) @(posedge clk);
 
     A = one_vector; // Set the first operand to one
-    B = one_vector; // Set the first operand to one
+    B = zero_vector; // Set the first operand to one
     
     repeat(3) @(posedge clk);
 
@@ -51,9 +51,9 @@ initial begin
     repeat(3) @(posedge clk);
 
     // Generate and apply random test vectors
-    for (int i = 0; i < 10; i++) begin
+    for (int i = 0; i < 9; i++) begin
         A = random_vectors[i];
-        B = random_vectors[i];
+        B = random_vectors[i+1];
         repeat(3) @(posedge clk);
     end
 end
