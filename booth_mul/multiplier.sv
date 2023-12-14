@@ -43,10 +43,9 @@ generate
   for (i = 0; i <= ((N-2)/2); i=i+1) begin
 
     assign ops[i][N:0] = partProducts[i][N:0];
-    
+
     if (i == 0) assign ops[i][N+2:N+1] = {B[(2*i+1)],B[(2*i+1)]}; 
     else if (i <= 4) assign ops[i][N+2:N+1] = {1'b1, ~B[(2*i+1)]};
-   
   end
 endgenerate
 
