@@ -31,7 +31,7 @@ generate
             .Carry_o(carrySel[i])
         );
 
-    end   
+    end
 endgenerate
 
 assign Carry_o = carrySel[(sizeCSA/sizeRCA)-1];
