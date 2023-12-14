@@ -2,15 +2,18 @@
 
 module daddaTree (
   input logic [4:0][12:0] ops,
-  output logic [20:0] result
+  output logic [19:0] result,
+  output logic carry_out
 );
 
 logic [5:0][18:0] M0;
 logic [5:0][18:0] M1;
 logic [3:0][18:0] M2;
 logic [2:0][18:0] M3;
-logic [1:0][19:0] fastAdd;
-logic [19:0]result0;
+//logic [1:0][19:0] fastAdd;
+logic [19:0] op1;
+logic [19:0] op2;
+
 
 genvar i;
 
@@ -118,25 +121,23 @@ assign M3[2][18]    = '0;
 // l = 3 -> set of central adders
 generate
   for (i=4; i<= 18; i = i+1) begin: M3ADD
-    fullAdder FA3 (M3[0][i], M3[1][i], M3[2][i], fastAdd[0][i], fastAdd[1][i+1]);
+    fullAdder FA3 (M3[0][i], M3[1][i], M3[2][i], op1[i], op2[i+1]);
 end
 endgenerate
 
-// l = 3 -> non regular adders
-halfAdder HA6 (M3[0][2], M3[1][2], fastAdd[0][2], fastAdd[1][3]);
-halfAdder HA7 (M3[0][3], M3[1][3], fastAdd[0][3], fastAdd[1][4]);
+// l = 3 -> non regular addersS
+halfAdder HA6 (M3[0][2], M3[1][2], op1[2], op2[3]);
+halfAdder HA7 (M3[0][3], M3[1][3], op1[3], op2[4]);
 
  // forming fastAdd
-assign fastAdd[0][1:0] = M3[0][1:0];
-assign fastAdd[1][0]   = M3[1][0];
-assign fastAdd[1][2]   = M3[2][2];
-assign fastAdd[1][1]   = 0;
-assign fastAdd[0][19]  = ops[3][11];
+assign op1[1:0] = M3[0][1:0];
+assign op2[0]   = M3[1][0];
+assign op2[2]   = M3[2][2];
+assign op2[1]   = 0;
+assign op1[19]  = ops[3][11];
 
-
-assign result0 = fastAdd[0] + fastAdd[1];
 
 // final sum (2 operands) adder instantiation
-CSA #(.sizeCSA(20), .sizeRCA(4)) CSA0 (.A(fastAdd[0][19:0]), .B(fastAdd[1][19:0]), .Carry_i(1'b0), .S(result[19:0]), .Carry_o(result[20]));
+CSA #(.sizeCSA(20), .sizeRCA(4)) CSA0 (.A(op1), .B(op2), .Carry_i(1'b0), .S(result[19:0]), .Carry_o(carry_out));
 
 endmodule

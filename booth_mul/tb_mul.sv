@@ -7,15 +7,15 @@ parameter N = 10;
 // Declare the `ops` and `result` signals
 logic [N-1:0] A;
 logic [N-1:0] B;
-logic [2*N:0] result;
+logic [2*N-1:0] result;
+logic co;
 
 // Instantiate a clock and reset signal
 logic clk = 1'b0;
 
 
 // Declare the `daddaTree` module instantiation
-multiplier mul (.A(A), .B(B), .result(result));
-
+multiplier mul (.A(A), .B(B), .result(result), .carry_out(co));
 
 // Create a clock generator
 always #5 clk = ~clk;
@@ -34,6 +34,13 @@ end
 
 // Initialize the test vectors
 initial begin
+
+  //  A = 10'b0011001100;
+  //  B = 10'b1111110001;
+
+    repeat(3) @(posedge clk);
+
+
     A = zero_vector; // Set the first operand to zero
     B = zero_vector; // Set the first operand to zero
 

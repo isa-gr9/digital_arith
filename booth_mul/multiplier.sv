@@ -3,7 +3,8 @@
 module multiplier #(parameter N = 10)(
   input logic [N-1:0] A,
   input logic [N-1:0] B,
-  output logic [2*N:0] result
+  output logic [2*N - 1:0] result,
+  output logic carry_out
 );
 
 logic [2:0] sel_temp;
@@ -50,7 +51,7 @@ generate
 endgenerate
 
 
-daddaTree dadda (.ops(ops), .result(result));
+daddaTree dadda (.ops(ops), .result(result), .carry_out(carry_out));
 
 
 
