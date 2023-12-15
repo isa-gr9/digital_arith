@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 module fullAdder (
   input logic a, b, Cin,
   output logic s, Co
