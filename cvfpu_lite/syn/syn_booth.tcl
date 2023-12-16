@@ -37,7 +37,7 @@ set active_design "fpnew_top"
 
 
 # DEFINE WORK DIRS
-set dirname "./results/${active_design}"
+set dirname "./results/booth"
 if {![file exists $dirname]} {
 	file mkdir $dirname
 }
@@ -46,7 +46,7 @@ set libDir "./work"
 file mkdir $libDir
 #define_design_lib $active_design -path $libDir
 
-analyze -format sv -library work {../src/cf_math_pkg.sv ../src/fpnew_pkg.sv ../src/lzc.sv ../src/rr_arb_tree.sv ../src/fpnew_classifier.sv ../src/fpnew_rounding.sv ../src/fpnew_fma.sv ../src/fpnew_opgroup_fmt_slice.sv ../src/fpnew_opgroup_block.sv ../src/fpnew_top.sv } > ${dirname}/${active_design}_analyze.txt
+analyze -format sv -library work {../../booth_mul/halfAdder.sv ../../booth_mul/fullAdder.sv ../../booth_mul/RCA.sv ../../booth_mul/CS_block.sv ../../booth_mul/CSA.sv ../../booth_mul/LUT.sv ../../booth_mul/daddatree.sv ../../booth_mul/multiplier.sv ../src/cf_math_pkg.sv ../src/fpnew_pkg.sv ../src/lzc.sv ../src/rr_arb_tree.sv ../src/fpnew_classifier.sv ../src/fpnew_rounding.sv ../src/fpnew_fma.sv ../src/fpnew_opgroup_fmt_slice.sv ../src/fpnew_opgroup_block.sv ../src/fpnew_top.sv } > ${dirname}/${active_design}_analyze.txt
 
 # Elaborate design
 elaborate -lib work $active_design > ${dirname}/${active_design}_elaborate.txt
@@ -60,11 +60,14 @@ elaborate -lib work $active_design > ${dirname}/${active_design}_elaborate.txt
 source "./${active_design}.sdc"
 
 
+####################################################################
+
+
 #####################################################################
 # COMPILE
 #####################################################################
 
-compile
+compile_ultra
 
 
 #####################################################################
@@ -72,6 +75,7 @@ compile
 #####################################################################
 
 # SET REPORT FILE NAME
+set res_rpt "${dirname}/${active_design}_resources.rpt"
 set timing_rpt "${dirname}/${active_design}_postsyn_timing.rpt"
 set power_rpt_noopt "${dirname}/${active_design}_postsyn_power_noopt.rpt"
 set clk_rpt "${dirname}/${active_design}_postsyn_timing.rpt"

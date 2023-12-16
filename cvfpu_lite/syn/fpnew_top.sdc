@@ -8,7 +8,7 @@ set clockSys  "CLK_SYS"
 
 # Period measured in nanoseconds. So for a 100MHz frequency, 10 ns are selected
 
-set clockPeriod "2.2"
+set clockPeriod "3"
 
 
 # Set-up Clock

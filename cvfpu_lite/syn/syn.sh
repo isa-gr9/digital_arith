@@ -19,7 +19,7 @@ echo "Running the synthesis.."
 # Check if a command line parameter is provided
 if [ "$#" -eq 0 ]; then
     # If no parameter is provided, use the default script
-    dc_shell-xg-t -64 -f ./syn.tcl > ${FINALS}
+    dc_shell-xg-t -64 -f ./syn_booth.tcl > ${FINALS}
 elif [ "$#" -eq 1 ] && [ "$1" = "cg" ]; then
     # If the parameter is "cg", use the alternate script
     dc_shell-xg-t -64 -f ../scripts/syn_cg.tcl > ${FINALS}
