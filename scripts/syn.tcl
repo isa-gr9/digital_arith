@@ -33,43 +33,46 @@ suppress_message RTDC-126
 ######################################################################
 
 # Set the design to synthesize
-set active_design "iir"
-#set active_design "iir_advanced"
+set active_design "fpnew_top"
 
 
 # DEFINE WORK DIRS
-set dirname "./results/${active_design}"
+set dirname "../syn/results/pparch"
 if {![file exists $dirname]} {
 	file mkdir $dirname
 }
 
-set libDir "./work/"
+set libDir "./work"
 file mkdir $libDir
-define_design_lib $active_design -path $libDir
+#define_design_lib $active_design -path $libDir
 
-
-analyze -format vhdl -library $active_design ../rtl/${active_design}.vhd > ${dirname}/${active_design}_analyze.txt
-
-#Preserve rtl names for make the power consumption estimation easier
-set power_preserve_rtl_hier_names true
-
+analyze -format sv -library work {../cvfpu_lite/src/cf_math_pkg.sv ../cvfpu_lite/src/fpnew_pkg.sv ../cvfpu_lite/src/lzc.sv ../cvfpu_lite/src/rr_arb_tree.sv ../cvfpu_lite/src/fpnew_classifier.sv ../cvfpu_lite/src/fpnew_rounding.sv ../cvfpu_lite/src/fpnew_fma.sv ../cvfpu_lite/src/fpnew_opgroup_fmt_slice.sv ../cvfpu_lite/src/fpnew_opgroup_block.sv ../cvfpu_lite/src/fpnew_top.sv } > ${dirname}/${active_design}_analyze.txt
 
 # Elaborate design
-elaborate -lib $active_design $active_design > ${dirname}/${active_design}_elaborate.txt
+elaborate -lib work $active_design > ${dirname}/${active_design}_elaborate.txt
 
 ######################################################################
 ##
 ## SET DESIGN CONSTRAINTS
 ##
 ######################################################################
-source "./${active_design}.sdc"
+
+source "../syn/${active_design}.sdc"
+
+
+####################################################################
+
+
+ungroup -all -flatten
+set_implementation DW02_mult/pparch [find cell *mult*]
 
 
 #####################################################################
 # COMPILE
 #####################################################################
 
-compile_ultra
+compile
+optimize_registers
 
 
 #####################################################################
@@ -77,6 +80,7 @@ compile_ultra
 #####################################################################
 
 # SET REPORT FILE NAME
+set res_rpt "${dirname}/${active_design}_resources.rpt"
 set timing_rpt "${dirname}/${active_design}_postsyn_timing.rpt"
 set power_rpt_noopt "${dirname}/${active_design}_postsyn_power_noopt.rpt"
 set clk_rpt "${dirname}/${active_design}_postsyn_timing.rpt"
@@ -90,6 +94,8 @@ report_timing > $timing_rpt
 report_power > $power_rpt_noopt
 # AREA REPORT
 report_area > $area_rpt
+# RESOURCES REPORT
+report_resources > $res_rpt
 
 #####################################################################
 # 
